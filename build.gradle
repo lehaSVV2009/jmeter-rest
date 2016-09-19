@@ -1,0 +1,36 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'jmeter-rest'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('org.springframework.boot:spring-boot-starter-hateoas')
+	compile('org.projectlombok:lombok')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile group: 'org.apache.jmeter', name: 'ApacheJMeter_java', version: '3.0'
+	compile group: 'org.apache.jmeter', name: 'ApacheJMeter_http', version: '3.0'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
